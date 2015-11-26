@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  photo: MyString
+  place: MyText
+  importance: MyString
+  state: MyString
+  counter: 1
+
+two:
+  title: MyString
+  description: MyText
+  photo: MyString
+  place: MyText
+  importance: MyString
+  state: MyString
+  counter: 1

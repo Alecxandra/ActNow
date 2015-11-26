@@ -1,0 +1,70 @@
+<div class="col s10 offset-s2">
+ <%= form_for(@profile) do |f| %>
+  <% if @profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+      <ul>
+      <% @profile.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <%= f.hidden_field :photo_cache %>
+  <div class="row">
+     <div class="row">
+        <div class="col s3 offset-s2">
+          <%= image_tag 'imgdefault.jpg', width: "310px", height: "200px", id: 'profile_pic' %> 
+          <div class="file-field input-field">
+            <div class="btn green accent-4">
+              <span>Foto</span>
+              <%= f.file_field :photo, id: 'file_input' %>
+            </div>
+            <div class="file-path-wrapper">
+             <input class="file-path validate" type="text">
+            </div>
+          </div>
+        </div>
+        <div class="col s7">
+          <div class="row">
+            <div class="input-field col s8">
+               <%= f.text_field :first_name %>
+              <label for="first_name">Nombre</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s8">
+              <%= f.text_field :last_name %>
+              <label for="first_name">Apellido</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s8">
+              <%= f.text_field :phone_number %>
+              <label for="first_name">Numero de Telefono</label>
+            </div>
+          </div>
+       </div>
+     </div> 
+  </div>
+  <div class="row">
+   <div class="row">
+        <div class="input-field col s8 offset-s2">
+          <%= f.text_area :about, class: "materialize-textarea"%>
+          <label for="textarea1">Biografia</label>
+        </div>
+      </div>
+  </div>
+ 
+ <div class="row">
+     <div class="input-field col s3 offset-s5">
+        <button class="waves-effect waves-light btn green accent-4">actualizar perfil</button>
+     </div>
+     </div>
+<% end %>
+</div>
+
+
+

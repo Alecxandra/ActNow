@@ -1,0 +1,58 @@
+#pagina_1{
+  width:auto;
+  height:100vh; 
+  color: #FFFFFF;
+}
+
+#pagina_2{
+  width:auto;
+  height:100vh; 
+  color: #FFFFFF;
+}
+
+#pagina_3{
+  width:auto;
+  height:100vh; 
+  color: #FFFFFF;
+}
+
+#pagina_4{
+  width:auto;
+  height:100vh; 
+  padding-top:70px;
+}
+
+/* label color */
+.input-field label {
+  color: #00c853;
+}
+
+/* label focus color */
+.input-field input[type=text]:focus + label {
+  color: #00c853;
+}
+
+/* label underline focus color */
+   .input-field input[type=text]:focus {
+     border-bottom: 1px solid #64dd17;
+     box-shadow: 0 1px 0 0 #64dd17;
+   }
+.input-field .materialize-textarea:focus {
+     border-bottom: 1px solid #64dd17;
+     box-shadow: 0 1px 0 0 #64dd17;
+   }
+   /* valid color */
+   .input-field input[type=text].valid {
+     border-bottom: 1px solid #64dd17;
+     box-shadow: 0 1px 0 0 #64dd17;
+   }
+   /* invalid color */
+   .input-field input[type=text].invalid {
+     border-bottom: 1px solid #e53935;
+     box-shadow: 0 1px 0 0 #e53935;
+   }
+   /* icon prefix focus color */
+   .input-field .prefix.active {
+     color: #64dd17;
+   }
+   

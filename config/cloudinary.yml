@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: dmwrfywxs
+  api_key: '886735345153816'
+  api_secret: M-Lo2y84g5FoL7ok_yLmEkWuMgM
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: dmwrfywxs
+  api_key: '886735345153816'
+  api_secret: M-Lo2y84g5FoL7ok_yLmEkWuMgM
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: dmwrfywxs
+  api_key: '886735345153816'
+  api_secret: M-Lo2y84g5FoL7ok_yLmEkWuMgM
+  enhance_image_tag: true
+  static_image_support: false

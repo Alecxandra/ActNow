@@ -1,0 +1,76 @@
+<div class="row">
+
+      <div class="col s3">
+        <div class="row">
+         <div class="card">
+            <div class="card-image waves-effect waves-block waves-light"> <%= image_tag 'default_p.png'%>
+             <div class="card-title">
+                <%= cl_image_tag(@profile.photo, :width => 90, :height => 98, 
+                           :crop => :fill, :gravity => :face,
+                           :radius => 20, class:"responsive-img z-depth-3") %>
+             </div>
+             </div>
+           
+         <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4"> <strong><%= @profile.first_name %></strong>
+                <i class="material-icons right">settings</i>
+              </span>
+             <p><%= current_user.email %><p>
+         </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4">Opciones<i class="material-icons right">close</i></span>
+       <div class="collection">
+         <%= link_to(edit_profile_path(@profile), { class: 'collection-item light-green-text text-accent-4' }) do %>
+           <i class="material-icons">create</i> Editar perfil
+         <% end %>
+         
+         <%= link_to(destroy_user_session_path, { method: :delete , class: 'collection-item light-green-text text-accent-4' }) do %>
+         <i class="material-icons">keyboard_return</i>Cerrar sesion
+         <% end %>
+       
+      </div>
+    </div>
+  </div>
+        </div>    
+        <div class="row">
+           <div class="card">
+               <div class="card-content">
+                  <span class="card-title activator grey-text text-darken-4"> <strong>Informacion de contacto</strong></span>
+             <p><i class=" material-icons light-green-text text-accent-4">email</i> <%= current_user.email %></p>
+                  
+             <p><i class="material-icons light-green-text text-accent-4">phone_android</i>  <%= @profile.phone_number %></p>    
+         </div>
+  </div>
+        </div>
+        <div class="row">
+           <div class="card">
+               <div class="card-content">
+                  <span class="card-title activator grey-text text-darken-4"> <strong>Biografia</strong></span>
+             <p><%= @profile.about %></p>
+                
+         </div>
+  </div>
+        </div>
+      </div>
+
+      <div class="col s9">
+          <div class="row">
+           <div class="card col s10 offset-s1">
+               <div class="card-content">
+                  <span class="card-title activator grey-text text-darken-4"> <strong>Informacion de contacto</strong></span>
+             <p><i class=" material-icons light-green-text text-accent-4">email</i> <%= current_user.email %></p>
+                  
+             <p><i class="material-icons light-green-text text-accent-4">phone_android</i>  <%= @profile.phone_number %></p>    
+         </div>
+  </div>
+        </div>
+      </div>
+
+    </div>
+          
+
+
+
+
+<%= link_to 'Edit', edit_profile_path(@profile) %> |
+<%= link_to 'Back', profiles_path %>

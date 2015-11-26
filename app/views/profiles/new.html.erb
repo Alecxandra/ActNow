@@ -1,0 +1,40 @@
+
+<div id="pagina_1" class="light-blue darken-3">
+    <ul class="pagination " style="margin:0;">
+    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+    <li class="active purple"><a href="#pagina_1" style="color: #FFFFFF;">1</a></li>
+    <li class="waves-effect "><a href="#pagina_2" style="color: #FFFFFF;">2</a></li>
+    <li class="waves-effect "><a href="#pagina_3" style="color: #FFFFFF;">3</a></li>
+    <li class="waves-effect "><a href="#pagina_4" style="color: #FFFFFF;">4</a></li>
+    <li class="waves-effect "><a href="#pagina_2"><i class="material-icons" style="color: #FFFFFF;">chevron_right</i></a></li>
+  </ul>
+  </div>
+
+  <div id="pagina_2" class="amber darken-4"> 
+   <ul class="pagination purple" style="margin:0;">
+    <li class="disabled"><a href="#pagina_1"><i class="material-icons" style="color: #FFFFFF;">chevron_left</i></a></li>
+    <li class="waves-effect "><a href="#pagina_1" style="color: #FFFFFF;">1</a></li>
+    <li class="active purple"><a href="#pagina_2" style="color: #FFFFFF;">2</a></li>
+    <li class="waves-effect"><a href="#pagina_3" style="color: #FFFFFF;">3</a></li>
+    <li class="waves-effect "><a href="#pagina_4" style="color: #FFFFFF;">4</a></li> 
+    <li class="waves-effect"><a href="#pagina_3"><i class="material-icons" style="color: #FFFFFF;">chevron_right</i></a></li>
+  </ul>
+  </div>
+  
+  <div id="pagina_3" class="light-green accent-4">
+    <ul class="pagination purple" style="margin:0;">
+    <li class=""><a href="#pagina_2"><i class="material-icons" style="color: #FFFFFF;">chevron_left</i></a></li>
+    <li class="waves-effect "><a href="#pagina_1" style="color: #FFFFFF;">1</a></li>
+    <li class="waves-effect "><a href="#pagina_2" style="color: #FFFFFF;">2</a></li>
+    <li class="active purple"><a href="#pagina_3" style="color: #FFFFFF;">3</a></li>
+     <li class="waves-effect "><a href="#pagina_4" style="color: #FFFFFF;">4</a></li>  
+    <li class=""><a href="#pagina_4"><i class="material-icons" style="color: #FFFFFF;">chevron_right</i></a></li>
+  </ul>
+  </div>
+<div id="pagina_4">
+   
+ <%= render 'form' %>
+</div>
+
+
+<%= link_to 'Back', profiles_path %>

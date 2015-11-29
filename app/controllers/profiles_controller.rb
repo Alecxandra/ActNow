@@ -10,6 +10,7 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.json
   def show
+    
   end
 
   # GET /profiles/new
@@ -26,10 +27,12 @@ class ProfilesController < ApplicationController
   # POST /profiles.json
   def create
     @profile = Profile.new(profile_params)
-    if params[:picture].present?
-        preloaded = Cloudinary::PreloadedFile.new(params[:picture])
-      logger.debug("Valido #{preloaded.valid?}")
-        @project.picture = preloaded.identifier.to_s
+    @profile.user_id = current_user.id
+    if params[:photo].present?
+        preloaded = Cloudinary::PreloadedFile.new(params[:photo])
+        logger.debug("LO QUE ES COSITA SEXOXO #{params[:photo]}")
+        logger.debug("Valido #{preloaded.valid?}")
+        @profile.photo = preloaded.identifier.to_s
     end
     respond_to do |format|
       if @profile.save

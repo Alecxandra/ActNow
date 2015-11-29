@@ -12,4 +12,5 @@ class Post
   field :importance, type: String
   field :state, type: String
   field :counter, type: Integer
+  accepts_nested_attributes_for :photos
 end

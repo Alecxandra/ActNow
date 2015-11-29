@@ -1,41 +1,48 @@
-<div class="">
-  <div class="">
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { style: "background-color:black", class: "col s6" }) do |f| %>
-  <%= devise_error_messages! %>
-     
-    <div>
-         <div class ="">
-           <div class ="row">
-              <div class="input-field ">
-                <i class="material-icons prefix">email</i>
-                <%= f.email_field :email, autofocus: true , class: "validate" %>
-                <label for="email">Correo</label>
-              </div>
-           </div>
-           <div class="row">
-              <div class="input-field ">
-                  <i class="material-icons prefix">vpn_key</i>
-                  <%= f.password_field :password, autocomplete: "off" %>
-                  <label for="password">Contraseña</label>
-              </div>
-           </div>  
-           <div class="row">
-              <div class="input-field col ">
-                  <i class="material-icons prefix">vpn_key</i>
-                  <%= f.password_field :password_confirmation, autocomplete: "off" %>
-                  <label for="password">Confirmar contraseña</label>
-             </div>
-           </div>  
-           <div class="row">
-              <div class="input-field col s3 offset-s5" >
-               <button class="waves-effect waves-light btn">Registrarse</button>
-              </div>
-             </div>
-         </div>
-    </div>
-<% end %>
+<div class="p_registration upper-top" syle="margin:0px">
+<br><br><br><br>
+<div class="row">  
+  <div  class="col s6 offset-s3" style="background-color: rgba(0, 0, 0, 0.8); ">
+  <br>
+ <div align="center">
+    <%= image_tag 'Logo_ActNow.png', width: "250px", height:"190px"%>
   </div>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+  
+
+     <div class="row ">
+       <div class="input-field col s6 offset-s3">
+          <i class="material-icons prefix">email</i>
+          <%= f.email_field :email, autofocus: true , class: "validate" %>
+          <label for="email">Correo</label>
+              
+       </div> 
+    </div>
+     <div class="row">
+       <div class="input-field col s6 offset-s3">
+         <i class="material-icons prefix">vpn_key</i>
+         <%= f.password_field :password, autocomplete: "off" %>
+         <label for="password">Contraseña</label>
+       </div> 
+    </div>
+     <div class="row">
+       <div class="input-field col s6 offset-s3">
+          <i class="material-icons prefix">vpn_key</i>
+          <%= f.password_field :password_confirmation, autocomplete: "off" %>
+          <label for="password">Confirmar contraseña</label>
+       </div> 
+    </div>
+     <div class="row">
+      <div class="input-field col s6 offset-s4">
+         <button class="waves-effect waves-light btn green accent-4">Registrarse</button>
+      </div>
+  </div>
+<% end %>
 </div>
+</div>
+  
+  </div>
 
 
 

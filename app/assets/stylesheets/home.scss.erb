@@ -3,7 +3,12 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 nav ul a,
 nav .brand-logo {
-  color: #444;
+  color: #FFFFFF;
+}
+
+.remove-color{
+  background-color: rgba(255,255,255,0.0);
+
 }
 
 p {
@@ -52,9 +57,59 @@ footer.page-footer {
 }
 
 .p_registration{
-  background-image: url('<%=asset_path 's_up.jpg'%>');
+background-image: url('<%=asset_path 'b2_honduras.jpg'%>');
   background-repeat: no-repeat;
     width: auto;
-    height: 100vh;
+    height: 100%;
     background-size: 100% auto;
+   
+}
+.p_session{
+background-image: url('<%=asset_path 'catedral_comayagua.jpg'%>');
+  background-repeat: no-repeat;
+    width: auto;
+    height: 100%;
+    background-size: 100% auto;
+   
+}
+
+.upper-top{
+ margin-top:-64px;
+
+}
+#new_user{
+
+   .input-field label {
+     color: #ffffff;
+   }
+   /* label focus color */
+   .input-field input[type=text]:focus + label {
+     color: #ffffff;
+   }
+   /* label underline focus color */
+   .input-field input[type=email]:focus {
+     border-bottom: 1px solid #00C853;
+     box-shadow: 0 1px 0 0 #00C853;
+   }
+  .input-field input[type=password]:focus {
+     border-bottom: 1px solid #00C853;
+     box-shadow: 0 1px 0 0 #00C853;
+   }
+   /* valid color */
+   .input-field input[type=text].valid {
+     border-bottom: 1px solid #00C853;
+     box-shadow: 0 1px 0 0 #00C853;
+   }
+   /* invalid color */
+   .input-field input[type=text].invalid {
+     border-bottom: 1px solid #e53935;
+     box-shadow: 0 1px 0 0 #e53935;
+   }
+   /* icon prefix focus color */
+   .input-field .prefix.active {
+     color:  #00C853;
+   }
+   .material-icons{
+    color:  #00C853;
+   }
 }

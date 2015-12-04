@@ -76,6 +76,7 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
     execjs (2.6.0)
+    exifr (1.2.3.1)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     http-cookie (1.0.2)
@@ -198,6 +199,7 @@ DEPENDENCIES
   cloudinary
   coffee-rails (~> 4.1.0)
   devise
+  exifr (~> 1.2)
   jbuilder (~> 2.0)
   jquery-rails
   materialize-sass (~> 0.96.1)

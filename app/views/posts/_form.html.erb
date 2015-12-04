@@ -1,3 +1,64 @@
+
+<div class="row">
+ <div class="col s9">
+          <div class="row">
+               <div class="card col s10 offset-s1" style="overflow: visible;">
+                  <%= form_for(@post, :html => { :multipart => true }) do |f| %>
+                      <div class="card-content">
+                               <div class="row">
+                                  <div class="input-field col s9">
+                                    <i class="material-icons prefix">create</i>
+                                    <%= f.text_field :title %>
+                                    <label>Titulo</label>
+                                  </div>
+                                  <div class=" input-field col s3">
+                                    
+                                       <%= select_tag(:importance, options_for_select(
+                                          [   
+                                            ["Prioridad",'', { 'disable' => 'disable', 'selected' => 'selected' }],
+                                            ['Alta','Alta', { }],
+                                            ['Media','Media', { }],
+                                            ['Baja', 'Baja', { }] 
+                                          ]
+                                    )) %>
+                                  </div>  
+                               </div>
+                               <div class="row">
+                                   <div class="input-field">
+                                       <i class="material-icons prefix">format_align_right</i>
+                                      <%= f.text_area :description, class: "materialize-textarea" %>
+                                      <label>Descripcion</label>
+                                    </div> 
+                                </div>
+                               <div class="row">
+                                 <%= f.fields_for :photos do |p| %>
+                                       <%= p.hidden_field :url_cache %>
+                                       <div class="file-field input-field">
+                                          <div class="btn green accent-4">
+                                             <span>Fotos</span>
+                                             <%= p.file_field :url, multiple: true, 
+                                             name: "photos[url][]",image_metadata: true %>
+                                          </div>
+                                          <div class="file-path-wrapper">
+                                            <input class="file-path validate" type="text">
+                                          </div> 
+                                       </div>  
+                                 <% end %> 
+                               
+                               </div>
+                               <div class="row">
+                                  <div class="right">
+                                   <button class="waves-effect waves-light btn green accent-4 right-align ">
+                                     publicar
+                                   </button>
+                                 </div>  
+                               </div>
+                          </div>
+                  <% end %>    
+               </div>
+          </div>
+      </div>
+</div>
 <%= form_for(@post, :html => { :multipart => true }) do |f| %>
   <% if @post.errors.any? %>
     <div id="error_explanation">
@@ -20,29 +81,34 @@
     <%= f.text_area :description %>
   </div>
 
-  <%= f.fields_for :photos do |p| %>
+    <%= f.fields_for :photos do |p| %>
      <%= p.hidden_field :url_cache %>
      <div class="field">
        <%= p.label :url %><br>
-       <%= p.file_field :url, multiple: true, name: "photos[url][]" %>
+       <%= p.file_field :url, multiple: true, name: "photos[url][]",image_metadata: true %>
      </div>
    <% end %>
 
-  <div class="field">
-    <%= f.label :place %><br>
-    <%= f.text_area :place %>
-  </div>
+  
   <div class="field">
     <%= f.label :importance %><br>
-    <%= f.text_field :importance %>
+    <%= select_tag(:importance, options_for_select(
+      [   
+        ["Elige la prioridad",'', { 'disable' => 'disable', 'selected' => 'selected' }],
+        ['Alto','Alto', { }],
+         ['Medio','Medio', { }],
+         ['Bajo', 'Bajo', { }] 
+      ]
+)) %>
+     
+    <%= f.select :importance, options_for_select([["Alto"], ["Medio"], ["Bajo"]]) %>
+   
   </div>
   <div class="field">
-    <%= f.label :state %><br>
-    <%= f.text_field :state %>
+   <%= f.hidden_field :state, :value =>"Sin resolver"%>
   </div>
   <div class="field">
-    <%= f.label :counter %><br>
-    <%= f.number_field :counter %>
+    <%= f.hidden_field :counter, :vaule => 0 %>
   </div>
   <div class="actions">
     <%= f.submit %>

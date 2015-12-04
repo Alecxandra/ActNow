@@ -4,7 +4,7 @@ class PictureUploader < CarrierWave::Uploader::Base
 
   process :convert => 'png'
   process :tags => ['post_picture']
-  
+  cloudinary_transformation :image_metadata=>true
   version :standard do
     process :resize_to_fill => [500, 500, :north]
   end

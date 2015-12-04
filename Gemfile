@@ -16,6 +16,7 @@ gem 'materialize-sass', '~> 0.96.1'
 gem 'devise'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'exifr', '~> 1.2'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

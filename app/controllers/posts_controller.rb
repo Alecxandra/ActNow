@@ -28,12 +28,12 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.profile_id = Profile.where(user_id: current_user.id).first.id
-
+      
     respond_to do |format|
       if @post.save
-         params[:photos]['url'].each do |a|
-          @photos = Photo.create!(url: a, post_id: @post.id)
-       end
+          params[:photos]['url'].each do |a|
+            @photos = Photo.create!(url: a, post_id: @post.id)
+          end
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else
@@ -75,7 +75,7 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :description, :photo, :place, :importance, :state, :counter,
-        photos_attributes: [:id, :post_id, :url])
+      params.require(:post).permit(:title, :description, :photo, :importance, :state, :counter,
+        photos_attributes: [:id, :post_id, :url, :url_cache])
     end
 end

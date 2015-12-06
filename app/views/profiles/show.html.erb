@@ -183,7 +183,42 @@
                <!-- Aqui van los comentarios -->
               <div class="card-reveal">
                 <span class="card-title grey-text text-darken-4">Comentarios<i class="material-icons right">close</i></span>
-                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                  <!-- Crear comentario -->
+                   <div class=" col s12">
+                     <ul class="collection">
+                       <%= form_for([post,@comment]) do |f| %>
+                         <li class="collection-item avatar" style="padding-left:0px">
+                        <div class="row">
+                          <div class="col s1">
+                           <%= cl_image_tag(@profile.photo, :width => 50, :height => 50, 
+                           :crop => :fill, :gravity => :face,
+                           :radius => 10 , class:"responsive-img left-align")%>
+                          </div>
+                          <div class="col s9">
+                             <%= f.text_area :message %>
+                          </div> 
+                          <div class="col s2">
+                              <button class="btn waves-effect waves-light secondary-content" type="submit">
+                                <i class="material-icons right">send</i>
+                              </button>
+                            <a  class="secondary-content"><i class="material-icons">send</i></a>
+                          </div>
+                        </div>
+                       
+                          
+                      </li>
+                       <% end %>
+                       <% post.comments.each do |comment| %>
+                        <li class="collection-item avatar">
+                          <p><%= comment.message%></p>
+                            <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                          </li>
+                       
+                       <% end %> 
+                     
+                   </ul>
+                   </div>
+                     
               </div>
               <!-- Aqui van otras acciones -->
               <div class="card-action">

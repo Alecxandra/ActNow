@@ -12,6 +12,7 @@ class ProfilesController < ApplicationController
   def show
     @post = Post.new 
     @photos = @post.photos.new
+    @comment= Comment.new
   end
 
   # GET /profiles/new

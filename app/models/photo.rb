@@ -1,5 +1,6 @@
 class Photo
   include Mongoid::Document
+  include Mongoid::Timestamps
   belongs_to :post
   mount_uploader :url, PictureUploader
    after_save :check_metadata

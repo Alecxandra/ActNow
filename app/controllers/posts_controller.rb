@@ -5,6 +5,10 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = Post.all
+    @post = Post.new 
+    @photos = @post.photos.new
+    @comment= Comment.new
+    @profile= Profile.where(user_id: current_user.id).first
   end
 
   # GET /posts/1

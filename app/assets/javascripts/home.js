@@ -3,20 +3,14 @@
     $('select').material_select();
     $('.tooltipped').tooltip({delay: 50});
     $('.modal-trigger').leanModal(); 
-    $('.slider').slider({
-      full_width: true
+    $('.jcarousel').jcarousel();
+   
+    $('.jcarousel-prev').jcarouselControl({
+        target: '-=1'
     });
-   
-   $('#prev-photo').on('click', function(event) {
-     event.preventDefault();
-     $('.slider').slider('prev');
-     
-   });
-   
-   $('#next-photo').on('click', function(event) {
-     event.preventDefault();
-     $('.slider').slider('next');
-     
-   });
+
+    $('.jcarousel-next').jcarouselControl({
+        target: '+=1'
+    });
 });
         

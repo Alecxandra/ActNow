@@ -11,13 +11,15 @@
  <div class="navbar-fixed ">
     <nav class=" light-green accent-4 z-depth-1">
       <div class="nav-wrapper">
-        <div class="brand-logo">
-          <h4>Logo</h4>
+        <div class="brand-logo" style="padding:10px;">
+              <%= link_to  posts_path do %>
+          <%= image_tag("ActNow-letras.png", size: "180x40") %>
+              <% end %>
         </div>
         
         <ul class="right hide-on-med-and-down">
-          <li><a href="sass.html">Sass</a></li>
-          <li><a href="badges.html">Components</a></li>
+          <li><%= link_to 'Home', root_path %></li>
+          
           <% if user_signed_in? %>
              <% if Profile.where(user_id: current_user.id).first != nil %>
                 <li> <%= link_to Profile.where(user_id: current_user.id).first.first_name, profile_path(Profile.where(user_id: current_user.id).first) %></li>
@@ -31,6 +33,7 @@
   </div>
         
 <%= yield %>
+
 
 </body>
 </html>

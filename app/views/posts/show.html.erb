@@ -1,149 +1,24 @@
-<div class="row">
-    <div class="col s9">
-      <div class="row">
-           <div class="card col s10 offset-s1">
-              <div class="card-content">
-                    <div class="row">
-                       <div class="col s4 valign-wrapper">
-                        <%= cl_image_tag(@post.profile.photo, :width => 55, :height => 50, 
-                             :crop => :fill, :gravity => :face,
-                             :radius => 10, class:"responsive-img") %>
-                        <span style="font-size:1em; margin:5px" class="valign">  <%=@post.profile.first_name%></span> 
-                      </div>
-                    </div><!-- header-->
-                    <div class="row">
-                         <h1 class="card-title black-text center-align" style="margin:0px;">
-                           <strong><%= @post.title%></strong>
-                         </h1>  
-                      </div><!-- Titulo -->
-                    <div class="row">
-                    <p><%= @post.description %></p>
-                    </div><!-- Descripcion-->
-                    <div class="row">
-                       <!-- Modal Trigger -->
-                        <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
-                       <!-- Modal Structure -->
-                       <div id="modal1" class="modal">
-                         <div class="modal-content">
-                           <div class="col s2"><button id="prev-photo">Anterior</button></div>
-                            <div class="col s8">
-                             <div class="slider">
-                                <ul class="slides">
-                                    <li>
-                                      <img src="http://lorempixel.com/580/250/nature/1"> <!-- random image -->
-                                      <div class="caption center-align">
-                                        <h3>This is our big Tagline!</h3>
-                                        <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-                                      </div>
-                                    </li>
-                                    <li>
-                                      <img src="http://lorempixel.com/580/250/nature/2"> <!-- random image -->
-                                      <div class="caption left-align">
-                                        <h3>Left Aligned Caption</h3>
-                                        <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-                                      </div>
-                                    </li>
-                                    <li>
-                                      <img src="http://lorempixel.com/580/250/nature/3"> <!-- random image -->
-                                      <div class="caption right-align">
-                                        <h3>Right Aligned Caption</h3>
-                                        <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-                                      </div>
-                                    </li>
-                                    <li>
-                                      <img src="http://lorempixel.com/580/250/nature/4"> <!-- random image -->
-                                      <div class="caption center-align">
-                                        <h3>This is our big Tagline!</h3>
-                                        <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-                                      </div>
-                                    </li>
-                                </ul>
-                              </div>
-                           </div>
-                           <div class="col s2"><button id="next-photo">Siguiente</button></div>
-                         </div>
-                         
-                         
-                       </div>
-                    </div><!-- Modal--> 
-              <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4">Comentarios<i class="material-icons right">close</i></span>
-                <p>Here is some more information about this product that is only revealed once clicked on.</p>
-              </div><!-- Comentarios -->
-              <div class="card-action">
-                <div class="row">
-                  <div class="col s3">
-                    <% if @post.importance == "Alta"%>
-                      <i class="material-icons red-text text-darken-1">error</i>Prioridad alta  
-                    <% elsif @post.importance =="Media"%>
-                      <i class="material-icons amber-text">warning</i>Prioridad Media
-                    <% elsif @post.importance == "Baja"%>
-                      <i class="material-icons blue-text text-darken-2">error_outline</i>Prioridad Baja
-                    <% end %>
-                  </div>
-                  <div class="col s3">
-                    <i class="material-icons tooltipped green-text text-accent-4" data-position="top" data-delay="50" data-tooltip="I am tooltip">
-                      location_on
-                    </i>Lugar
-                  </div>
-                  <div class="col s2">
-                   <i class="material-icons yellow-text text-darken-1">star</i><%=@post.counter%>
-                  </div>
-                  <div class="col s2">
-                   <i class="material-icons deep-orange-text">share</i>
-                  </div> 
-                  <div class="col s2">
-                     <span class="card-title activator grey-text text-darken-4" style="font-size:14px">
-                       <i class="material-icons light-blue-text text-accent-4">question_answer</i><%= @post.comments.count %>
-                     </span>
-                  </div>
-                  
-                </div>
-              </div><!-- Demas acciones-->
-           </div>
-      </div>
-      
-    </div>
-</div>
+<div id="map"></div>
 
+<script type="text/javascript">
+  var map;
+  function initMap() {
+    
+    var postPlace = {lat: <%= @post.place.latitude %>, lng: <%= @post.place.longitude %>};
+    
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: postPlace,
+      zoom: 18
+    });
+    
+    var marker = new google.maps.Marker({
+      position: postPlace,
+      map: map,
+      title: '<%= @post.title %>'
+    });
+  }
+</script>
 
-
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @post.description %>
-</p>
-
-<p>
-  <strong>Photo:</strong>
-</p>
-
-<p>
-  <strong>Place:</strong>
-  <%= @post.place %>
-</p>
-
-<p>
-  <strong>Importance:</strong>
-  <%= @post.importance %>
-</p>
-
-<p>
-  <strong>State:</strong>
-  <%= @post.state %>
-</p>
-
-<p>
-  <strong>Counter:</strong>
-  <%= @post.counter %>
-</p>
-
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBom9ZSJTdmYboSyMFOftOM8Le-L-jcTHU&callback=initMap">
+</script>

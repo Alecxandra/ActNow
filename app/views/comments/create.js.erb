@@ -1,0 +1,2 @@
+$('#comments-post-<%= @post.id%>').html('<%= j render partial: "posts/comment_list", locals:{post: @post}%>');
+$('#comments-counter-<%= @post.id %>').html(<%= @post.comments.count %>);

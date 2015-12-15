@@ -15,4 +15,5 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require jquery.remotipart
+//= require lightbox
 //= require_tree .

@@ -54,7 +54,7 @@ class PostsController < ApplicationController
           params[:photos]['url'].each do |a|
             @photos = Photo.create!(url: a, post_id: @post.id)
           end
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.html { redirect_to posts_path, notice: 'Post was successfully created.' }
         format.js
         format.json { render :show, status: :created, location: @post }
       else

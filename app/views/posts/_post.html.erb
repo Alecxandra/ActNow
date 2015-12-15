@@ -17,25 +17,17 @@
                     </div>
                     <!-- Aqui van las fotos -->
                     <div class="row">
-                       <!-- Modal Trigger -->
-                        <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
-                       <!-- Modal Structure -->
-                       <div id="modal1" class="modal">
-                         <div class="modal-content">
-                           <div class="jcarousel">
-                             <ul>
-                               <li> <%= image_tag("background1.jpg",width: "700px", height: "400px") %></li>
-                               <li> <%= image_tag("Comayagua.jpg",width: "700px", height: "400px") %></li>
-                             </ul>
-                             <a href="#" class="jcarousel-prev" data-jcarouselcontrol="true">
-                               <i class="material-icons">keyboard_arrow_left</i>
-                             </a>
-                             <a href="#" class="jcarousel-next" data-jcarouselcontrol="true"><i class="material-icons">keyboard_arrow_right</i></a>
-                           </div>
-                         </div>
-                         
-                         
-                       </div>
+                      <div>
+                        <% post.photos.each do |photo| %>
+                        
+   <a class="example-image-link" href="<%= photo.url%>" data-lightbox="set-<%= post.id%>">
+        <img class="example-image" src="<%= photo.url%>" style="width: 250px ;height:250px" alt=""/>
+       </a>
+                        
+                        <% end %>
+          
+    </div>
+                    
                     </div>
                     <div class="row">
                       <span class="blue-grey-text text-lighten-3">
@@ -49,7 +41,7 @@
                   <!-- Crear comentario -->
                    <div class="">
                      <ul class="collection">
-                       <%= form_for([post,@comment]) do |f| %>
+                       <%= form_for([post,@comment], remote:true) do |f| %>
                          <li class="collection-item avatar" style="padding-left:0px; ">
                           <div class="row">
                           <div class="col s1">
@@ -58,7 +50,7 @@
                            :radius => 10 , class:"responsive-img left-align")%>
                           </div>
                           <div class="col s10">
-                            <%= f.text_area :message, placeholder:"Escribe tu comentario" %>
+                            <%= f.text_area :message, placeholder: "Escribe tu comentario" %>
                           </div> 
                           <div class="col s1">
                               <button class=" btn-flat secondary-content transparent" type="submit">
@@ -71,30 +63,9 @@
                          </li>
                        <% end %>
                        <!-- Listar comentarios-->
-                       <% post.comments.each do |comment| %>
-                        <li class="collection-item avatar " style="padding-left:0px">
-                                <div class="row">
-                                    <div class="col s1">
-                                          <%= cl_image_tag(comment.profile.photo, :width => 50, :height => 50, 
-                                     :crop => :fill, :gravity => :face,:radius => 10 , class:"responsive-img left-align")%>
-
-                                    </div>
-                                    <div class="col s11">
-                                     <strong><%= comment.profile.first_name%></strong><br>
-                                      <p class="text-black"><%= comment.message%></p><br>
-                                      <span class="blue-grey-text text-lighten-3">
-                                        <%= comment.created_at.strftime("%d-%b a las %d:%I %p")%>
-                                      </span>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                 <div class="s12">
-                                    
-                                 </div>
-                                </div>
-                          </li>
-                       
-                       <% end %> 
+                       <div id="comments-post-<%= post.id %>">
+                        <%= render "comment_list", post: post %>
+                       </div>  
                      
                    </ul>
                    </div>
@@ -128,7 +99,8 @@
                   </div> 
                   <div class="col s2">
                      <span class="card-title activator grey-text text-darken-4" style="font-size:14px">
-                       <i class="material-icons light-blue-text text-accent-4">question_answer</i><%= post.comments.count %>
+                       <i class="material-icons light-blue-text text-accent-4">question_answer</i>
+                       <span id="comments-counter-<%= post.id %>"><%= post.comments.count %></span>
                      </span>
                   </div>
                   

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ActNow</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+ <div class="navbar-fixed ">
+    <nav class=" remove-color">
+      <div class="nav-wrapper">
+        <div class="brand-logo" style="padding:10px;">
+              <%= link_to  posts_path do %>
+          <%= image_tag("ActNow-letras.png", size: "180x40") %>
+              <% end %>
+        </div>
+        
+        <ul class="right hide-on-med-and-down">
+          <li><%= link_to 'Home', root_path %></li>
+          
+          <% if user_signed_in? %>
+             <% if Profile.where(user_id: current_user.id).first != nil %>
+                <li> <%= link_to Profile.where(user_id: current_user.id).first.first_name, profile_path(Profile.where(user_id: current_user.id).first) %></li>
+             <% end %>
+          <% else %>
+            <li><%= link_to 'Entrar', new_user_session_path %></li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+  </div>
+        
+<%= yield %>
+
+
+</body>
+</html>

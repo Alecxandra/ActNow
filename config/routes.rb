@@ -7,8 +7,11 @@ Rails.application.routes.draw do
   resources :solutions
   resources :comments
   resources :profiles
-  resources :posts
+  resources :posts do
+    post :like
+  end
   get 'home/index'
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

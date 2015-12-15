@@ -1,4 +1,4 @@
-$(document).ready(function() {
+var initFunction = function() {
   function readURL(input) {
 
       if (input.files && input.files[0]) {
@@ -15,5 +15,7 @@ $(document).ready(function() {
   $("#file_input").change(function(){
       readURL(this);
   });
+};
 
-});
+$(document).on('page:load', initFunction);
+$(document).ready(initFunction);

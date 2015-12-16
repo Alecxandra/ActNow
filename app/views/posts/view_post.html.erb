@@ -1,0 +1,110 @@
+<div class="row">
+  <div id="post-<%= @post.id %>" class="card col s10 offset-s1">
+              <div class="card-content">
+                    <div class="row">
+                       <div class="col s4 valign-wrapper">
+                         <%= cl_image_tag(@post.profile.photo, :width => 55, :height => 50, 
+                           :crop => :fill, :gravity => :face,
+                           :radius => 10, class:"responsive-img") %>
+                      <span style="font-size:1em; margin:5px" class="valign">  <%=@post.profile.first_name%></span>  
+                       </div><!-- quien creo el post-->
+                    </div><!-- El coso de arriba-->
+                    <h1 class="card-title black-text center-align" style="margin:0px;">
+                      <strong><%= @post.title%></strong>
+                    </h1>
+                    <div class="row">
+                    <p><%= @post.description %></p>
+                    </div>
+                    <!-- Aqui van las fotos -->
+                    <div class="row">
+                      <div>
+                        <% @post.photos.each do |photo| %>
+                        
+   <a class="example-image-link" href="<%= photo.url%>" data-lightbox="set-<%= @post.id%>">
+        <img class="example-image" src="<%= photo.url%>" style="width: 250px ;height:250px" alt=""/>
+       </a>
+                        
+                        <% end %>
+          
+    </div>
+                    
+                    </div>
+                    <div class="row">
+                      <span class="blue-grey-text text-lighten-3">
+                        <%= @post.created_at.strftime("%d-%b a las %d:%I %p")%>
+                      </span>
+                    </div>
+                </div>
+               <!-- Aqui van los comentarios -->
+              <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4"><strong>Comentarios</strong><i class="material-icons right">close</i></span>
+                  <!-- Crear comentario -->
+                   <div class="">
+                     <ul class="collection">
+                       <%= form_for([@post,@comment], remote:true) do |f| %>
+                         <li class="collection-item avatar" style="padding-left:0px; ">
+                          <div class="row">
+                          <div class="col s1">
+                           <%= cl_image_tag(@profile.photo, :width => 50, :height => 50, 
+                           :crop => :fill, :gravity => :face,
+                           :radius => 10 , class:"responsive-img left-align")%>
+                          </div>
+                          <div class="col s10">
+                            <%= f.text_area :message, placeholder: "Escribe tu comentario" %>
+                          </div> 
+                          <div class="col s1">
+                              <button class=" btn-flat secondary-content transparent" type="submit">
+                                <i class=" material-icons light-green-text text-accent-4" style="font-size:30px">
+                                  send
+                                </i>
+                              </button>
+                          </div>
+                        </div>
+                         </li>
+                       <% end %>
+                       <!-- Listar comentarios-->
+                       <div id="comments-post-<%= @post.id %>">
+                        <%= render "comment_list", post: @post %>
+                       </div>  
+                     
+                   </ul>
+                   </div>
+              </div>
+              <!-- Aqui van otras acciones -->
+              <div class="card-action">
+                <div class="row">
+                  <div class="col s3">
+                    <% if @post.importance == "Alta"%>
+                      <i class="material-icons red-text text-darken-1">error</i>Prioridad alta  
+                    <% elsif @post.importance =="Media"%>
+                      <i class="material-icons amber-text">warning</i>Prioridad Media
+                    <% elsif @post.importance == "Baja"%>
+                      <i class="material-icons blue-text text-darken-2">error_outline</i>Prioridad Baja
+                    <% end %>
+                  </div>
+                  <div class="col s3">
+                    <%= link_to post_path(@post) do %>
+                      <i class="material-icons tooltipped green-text text-accent-4" data-position="top" data-delay="50" data-tooltip="I am tooltip">
+                      location_on
+                    </i>Lugar
+                    <% end %>
+                  </div>
+                  <div class="col s2">
+                    <%= link_to post_like_path(@post), remote: true, class: 'stared', method: :post do%>
+                   <i class="material-icons yellow-text text-darken-1">star</i><span id="likes-post-<%= @post.id %>"><%=@post.counter%></span>
+                    <% end %>
+                  </div>
+                  <div class="col s2">
+                   <i class="material-icons deep-orange-text">share</i>
+                  </div> 
+                  <div class="col s2">
+                     <span class="card-title activator grey-text text-darken-4" style="font-size:14px">
+                       <i class="material-icons light-blue-text text-accent-4">question_answer</i>
+                       <span id="comments-counter-<%= @post.id %>"><%= @post.comments.count %></span>
+                     </span>
+                  </div>
+                  
+                </div>
+              </div>
+           </div>
+      </div>

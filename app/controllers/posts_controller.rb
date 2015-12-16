@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :set_post_like, only: [:like]
+  before_action :set_post_like, only: [:like, :view_post]
 
   # GET /posts
   # GET /posts.json
@@ -17,7 +17,11 @@ class PostsController < ApplicationController
   def show
     @photos = @post.photos.all
   end
-   
+  def view_post
+    @comment = Comment.new
+    @profile = Profile.where(user_id: current_user.id).first
+  end  
+  
   def like
     @post.counter= @post.counter+1
      respond_to do |format|

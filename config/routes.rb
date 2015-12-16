@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :profiles
   resources :posts do
     post :like
+    get :view_post 
   end
   get 'home/index'
   

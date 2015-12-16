@@ -31,7 +31,7 @@
                     </div>
                     <div class="row">
                       <span class="blue-grey-text text-lighten-3">
-                        <%= post.created_at.strftime("%d-%b a las %d:%I %p")%>
+                        <%= link_to post.created_at.strftime("%d-%b a las %d:%I %p"), post_view_post_path(post)%>
                       </span>
                     </div>
                 </div>
@@ -95,7 +95,9 @@
                     <% end %>
                   </div>
                   <div class="col s2">
+                    <%= link_to "https://www.facebook.com/dialog/share?app_id=1697308623839070&display=popup&href=" + post_view_post_url(post) + "&redirect_uri=" + posts_url do %>
                    <i class="material-icons deep-orange-text">share</i>
+                    <% end %> 
                   </div> 
                   <div class="col s2">
                      <span class="card-title activator grey-text text-darken-4" style="font-size:14px">
